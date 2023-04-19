@@ -4,26 +4,65 @@
     Image
   </dt>
 
-    <dd> </dd>
+    <dd> <img src="<%= @photo.image %>"> </dd>
 
   <dt>
     Caption
   </dt>
 
-    <dd>
+    <dd> <%= @photo.caption %> </dd>
   <dt>
     Owner
   </dt>
 
+    <dd> <%= @photo.poster.username %> </dd>
   <dt>
     Posted
   </dt>
 
+    <dd> <%= @photo.created_at %> </dd>
   <dt>
     Edit Photo
   </dt>
 
+    <dd> form </dd>
   <dt>
     Delete Photo
   </dt>
+    <dd> 
+      <a href="/delete_photo/<%= @photo.id %>">Delete this photo</a>
+     </dd>
 </dl>
+
+<h2>Comments</h2>
+
+<table>
+  <tr>
+    <th>Commenter</th>
+
+    <th>Comment</th>
+  
+    <th>Posted</th>
+  </tr>
+
+<% @list_of_comments.each do |comment| %>
+  <tr>
+    <td>
+      <%= comment.commenter.username %>
+    </td>
+
+    <td>
+      <%= comment.body %>
+    </td>
+
+    <td>
+      <%= comment.created_at %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>Add new comment<h3>
+<form>
+
+</form>
