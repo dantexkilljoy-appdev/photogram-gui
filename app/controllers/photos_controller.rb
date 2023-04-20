@@ -24,7 +24,7 @@ class PhotosController < ApplicationController
     else
     render({ template: "photo_templates/show.html.erb" })
     end
-
+  end
     def destroy
       the_id = params.fetch("path_id")
 
@@ -38,5 +38,22 @@ class PhotosController < ApplicationController
 
       redirect_to("/photos")
     end
-  end
+
+    def create
+
+      fetched_image = params.fetch("input_image")
+      fetched_caption = params.fetch("input_caption")
+      fetched_id = params.fetch("input_owner_id")
+
+      a_new_photo = Photo.new
+      a_new_photo.image = fetched_image
+      a_new_photo.caption = fetched_caption
+      a_new_photo.owner_id = fetched_id
+
+      a_new_photo.save
+
+      #render({ template: "photo_templates/create.html.erb" })
+
+      redirect_to("/photos/" + a_new_photo.id.to_s)
+    end
 end
