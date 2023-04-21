@@ -21,4 +21,36 @@ class UsersController < ApplicationController
       render({ template: "user_templates/show.html.erb" })
     end
   end
+
+  def add
+
+    fetched_user = params.fetch("query_user")
+
+    a_new_user = User.new
+    a_new_user.username = fetched_user
+
+    a_new_user.save
+
+    #render({ template: "user_templates/add.html.erb"})
+
+    redirect_to("/users/" + a_new_user.username.to_s)
+  end
+
+  def update
+
+    the_id = params.fetch("update_id")
+
+    matching_users = User.where({ id: the_id })
+
+    the_user = matching_users.first
+
+    fetched_user = params.fetch("input_username")
+
+    the_user.username = fetched_user
+
+    the_user.save
+
+    redirect_to("/users/" + the_user.username.to_s)
+  end
+
 end

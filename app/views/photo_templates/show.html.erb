@@ -25,7 +25,17 @@
     Edit Photo
   </dt>
 
-    <dd> form </dd>
+    <dd>
+      <form action="/update_photo/<%= @photo.id %>">
+        <label for="browser_image">Image</label>
+        <input id="browser_image" type="text" name="input_image" placeholder="Enter a URL for the image..." value="<%= @photo.image %>">
+
+        <label for="browser_caption">Caption</label>
+        <textarea id="browser_caption" name="input_caption" placeholder="Enter a caption for the photo..."><%= @photo.caption %></textarea>
+
+        <button>Update photo</button>
+      </form>
+    </dd>
   <dt>
     Delete Photo
   </dt>
@@ -62,7 +72,17 @@
   <% end %>
 </table>
 
-<h3>Add new comment<h3>
-<form>
+<h3>Add new comment</h3>
 
+<form action="/comment_record">
+  <label for="browser_photo_id">Photo ID</label>
+  <input id="browser_photo_id" name="input_photo_id" value="<%= @photo.id %>" type="text">
+
+  <label for="browser_author_id">Author ID</label>
+  <input id="browser_author_id" name="input_author_id" type="text">
+
+  <label for="browser_comment">Comment</label>
+  <textarea id="browser_comment" name="input_comment" placeholder="Enter a comment..."></textarea>
+
+  <button>Add comment</button>
 </form>

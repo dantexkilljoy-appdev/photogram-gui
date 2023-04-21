@@ -8,8 +8,11 @@
   <dt>Edit user</dt>
 
   <dd>
-  <form action=>
+  <form action="/update_user/<%= @path_user.id %>">
+    <label for="browser_username">Username</label>
+    <input id="browser_username" type="text" name="input_username" value="<%= @path_user.username %>">
 
+    <button>Update user</button>
   </form>
   </dd>
 </dl>
